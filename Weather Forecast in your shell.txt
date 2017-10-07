@@ -1,0 +1,22 @@
+https://github.com/chubin/wttr.in
+
+#Commands
+curl wttr.in
+curl wttr.in/newyork
+curl wttr.in/34109
+curl wttr.in/@filmsbykris.com
+
+#moon
+wttr.in/Moon
+wttr.in/Moon@2016-Mar-23
+
+#help
+curl wttr.in/:help
+=====================
+GND - GND
+3.3v - 3.3v
+5v - N/A
+CS - D8 - GPIO #15
+MOSI - D7 - GPIO #13
+SCK - D5 - GPIO #14
+MISO - D6 - GPIO #12

@@ -1,0 +1,97 @@
+#VIM Notes
+#run a command and put the output into the current file
+:r !ifconfig
+
+#run a command against the current file
+:%!grep netmask
+
+#but since VIM has built in tools you don't need grep
+#search for all matches
+:g/netmask/
+
+#jump to line number 42
+42G
+
+#delete all lines that don't match
+:v/netmask/d
+
+#substitution
+:%s/^.*inet /
+#delete everything before "inet " on a line
+:%s/^.*inet /
+#delete everything after "  net" on a line
+:%s/  net.*/
+
+#use grep to get ip addresses from a file
+:%!grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
+
+#history search 
+q:/
+
+#move to bottom of screen
+L
+
+#center screen on current line
+zz
+
+#center current line at top of the screen
+zt
+#at bottom 
+zb
+
+#up and down page
+Ctrl+u
+Ctrl+b
+
+#moving to beginning or end of line
+0
+$
+^
+g_
+
+#record a macro
+
+qd	start recording to register d
+...	your complex series of commands
+q	stop recording
+@d	execute your macro
+@@	execute your macro again
+
+#find next and previous instance of the current word you are on
+*
+#
+
+#jump by work
+w
+e
+
+#delete everything up to or including a charactor
+#quotes in this example
+dt"
+df"
+
+#change/delete inner tag html
+cit
+dit
+
+#change/delete between quotes
+ci"
+di"
+
+#find opening/closing of functions
+%
+
+#spell check
+:set spell spelllang=en_us
+:set nospell
+z=
+
+#mark a spot and return to it
+mm
+'m
+
+#increment a number
+ctrl-a
+
+#go back in time 2 minutes
+earlier 2m

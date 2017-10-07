@@ -1,0 +1,17 @@
+#redirecting output to another tty (teletype) or pts (pseudo-teletype)
+
+#find out who is logged onto which terminal
+who -a
+
+#now send text to that terminal
+echo "Hello World" > /dev/tty1
+#or
+echo "Hello World" > /dev/pts/1
+
+#or send something more fun
+sudo apt install cmatrix fortune cowsay
+cmatrix > /dev/pts/2
+cowsay "Hello There" > /dev/pts/2
+fortune > /dev/pts/2
+cowsay "$(fortune)" > /dev/pts/2
+fortune|cowsay -f tux > /dev/pts/2

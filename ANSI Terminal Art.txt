@@ -1,0 +1,4 @@
+sudo aptitude install caca-utils
+wget "http://www.writeups.org/img/fiche/714a.jpg" -O doom.jpg
+img2txt doom.jpg
+img2txt doom.jpg -f html > iaff.html

@@ -1,0 +1,46 @@
+#Mysql Shell notes
+
+#restart service if needed
+sudo /etc/init.d/mysql restart
+
+#login with password prompt
+mysql -u root -p
+
+#list databases
+show databases;
+
+#create database
+CREATE DATABASE MyDatabase;
+
+#choose database to use
+USE MyDatabase;
+
+#list tables
+show tables;
+
+#Create a table with auto increments and some fields
+CREATE TABLE MyTable ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , address TEXT NOT NULL , phone TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
+
+#enter data into table
+INSERT INTO MyTable (id, name, address, phone) VALUES (NULL, 'John Smith', '123 Elm Street', '(555)555-5555');
+
+#show entire table
+select * from MyTable;
+
+#delete row
+DELETE FROM MyTable WHERE id = '2';
+
+#query (Not case sensitive)
+SELECT * FROM MyTable WHERE name = 'betty friend';
+SELECT * FROM MyTable WHERE name LIKE 'betty%';
+
+#modify row
+UPDATE MyTable SET address="124 Elm Street", phone="(555)555-3333" WHERE id=4;
+
+#Backup and restore Database
+mysqldump -u root -p --all-databases > dump.sql
+mysql -u root -p <dump.sql
+
+#or by database
+mysqldump -u root -p MyDatabase > dumpfilename.sql
+mysql -u root -p MyDatabase < dumpfilename.sql
