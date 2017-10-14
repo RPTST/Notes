@@ -24,3 +24,26 @@ Change ssid/psk as your needs but dont remove the ->"<-.
 
 5. Including a blank file called "ssh" (without an extension, such as txt) file.   This will allow you to enable ssh for remote connection.
 6. You are able to access you PI remotely with the need to keyboard, mouse or monitor (as called headless).
+
+Adding remote access with VNC, remote desktop and teamviewer
+
+1. Enabling VNC
+sudo raspi-config
+
+Goto interfaces Options
+select P3 - VNC
+and enable
+select back the finsh
+This will reboot your raspberry pi
+
+2. sudo apt-get install xrdp
+
+3. Edit /boot/config.txt 
+4. Remove # from the the following lines:
+framebuffer_width=1280
+framebuffer_height=720
+
+5. You have to reboot to see change
+sudo reboot
+
+This will enable VNC and remote dekstop
