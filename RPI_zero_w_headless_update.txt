@@ -1,0 +1,58 @@
+To create a headless PI zero w:
+
+1. Download the official img from https://www.raspberrypi.org/downloads/raspbian/
+2. extract img with https://www.rarlab.com/download.htm
+3. Create a SD image with https://etcher.io/
+4. Afer the image is done due the following:
+
+Put a "wpa_supplicant.conf" into boot partition, this will be copied to the right directory (/etc/wpa_supplicant/) at boot.
+
+Example:
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=DE
+
+network={
+ssid="myssid"
+psk="mypassword"
+key_mgmt=WPA-PSK
+}
+
+Change ssid/psk as your needs but dont remove the ->"<-.
+
+
+5. Including a blank file called "ssh" (without an extension, such as txt) file.   This will allow you to enable ssh for remote connection.
+6. You are able to access you PI remotely with the need to keyboard, mouse or monitor (as called headless).
+
+Adding remote access with VNC, remote desktop and teamviewer
+
+Enabling VNC
+1. sudo raspi-config
+2. Goto interfaces Options
+3. Select P3 - VNC select then select enable
+4. Tab and select back
+5. Tab and select finsh
+This will reboot your raspberry pi
+
+Install remote desktop
+1. Install the xrdp
+sudo apt-get install xrdp
+2. Edit /boot/config.txt amd remove # from the the following lines:
+framebuffer_width=1280
+framebuffer_height=720
+4. You have to reboot to see change
+sudo reboot
+
+Install Teamviewer
+1. Download teamviewer
+wget https://download.teamviewer.com/download/linux/teamviewer-host_armhf.deb
+2. Install package
+sudo dpkg -i teamviewer-host_armhf.deb
+- you will see an error about not being able to install then do the following:
+sudo apt-get -f install
+sudo dpkg -i teamviewer-host_armhf.deb
+3. Now reboot
+sudo reboot
+
+This will enable VNC and remote dekstop
